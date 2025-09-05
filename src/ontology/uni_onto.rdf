@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/admin/ontologies/2025/4/university-ontology-31"
+         xmlns="http://www.semanticweb.org/admin/ontologies/2025/4/university-ontology-31#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/admin/ontologies/2025/4/university-ontology-31">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ontology for a University Course Registration System</rdfs:comment>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#accountAffiliatedWithFaculty">
+  <owl:inverseOf rdf:resource="#hasAffiliatedUser"/>
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="#Faculty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAffiliatedUser">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="#UserAccount"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#achievedByStudent">
+  <owl:inverseOf rdf:resource="#hasAchievedGrade"/>
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="#Student"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasAchievedGrade">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Grade"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#awardedInTerm">
+  <owl:inverseOf rdf:resource="#hasGradesAwarded"/>
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="#AcademicTerm"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasGradesAwarded">
+  <rdfs:domain rdf:resource="#AcademicTerm"/>
+  <rdfs:range rdf:resource="#Grade"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#belongsToFaculty">
+  <owl:inverseOf rdf:resource="#hasMajor"/>
+  <rdfs:domain rdf:resource="#Major"/>
+  <rdfs:range rdf:resource="#Faculty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasMajor">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="#Major"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#forCourse">
+  <owl:inverseOf rdf:resource="#hasStudentGrade"/>
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasStudentGrade">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Grade"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#groupsProgramComponent">
+  <owl:inverseOf rdf:resource="#partOfOptionalGroup"/>
+  <rdfs:domain rdf:resource="#OptionalGroup"/>
+  <rdfs:range rdf:resource="#ProgramCourseLink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#partOfOptionalGroup">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="#OptionalGroup"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasEnrolledStudent">
+  <owl:inverseOf rdf:resource="#studiesMajor"/>
+  <rdfs:domain rdf:resource="#Major"/>
+  <rdfs:range rdf:resource="#Student"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#studiesMajor">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Major"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasPrerequisite">
+  <owl:inverseOf rdf:resource="#isPrerequisiteFor"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isPrerequisiteFor">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasProgramComponent">
+  <owl:inverseOf rdf:resource="#linksProgram"/>
+  <rdfs:domain rdf:resource="#TrainingProgram"/>
+  <rdfs:range rdf:resource="#ProgramCourseLink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#linksProgram">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="#TrainingProgram"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasUserAccount">
+  <owl:inverseOf rdf:resource="#isAccountOfStudent"/>
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#UserAccount"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isAccountOfStudent">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="#Student"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isComponentOfProgram">
+  <owl:inverseOf rdf:resource="#linksCourse"/>
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="#ProgramCourseLink"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#linksCourse">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#offeredByMajor">
+  <owl:inverseOf rdf:resource="#offersTrainingProgram"/>
+  <rdfs:domain rdf:resource="#TrainingProgram"/>
+  <rdfs:range rdf:resource="#Major"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#offersTrainingProgram">
+  <rdfs:domain rdf:resource="#Major"/>
+  <rdfs:range rdf:resource="#TrainingProgram"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#suggestsCourse">
+  <rdfs:domain rdf:resource="#Field"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasInterest">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Field"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#recommended">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="#Course"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#fieldName">
+  <rdfs:domain rdf:resource="#Field"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#academicEnrollmentYear">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#accountEmail">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#accountID">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#className">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#continuousAssessmentScore">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#courseID">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#courseName">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#credits">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#dateJoined">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#dateOfBirth">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#facultyAddress">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#facultyEmail">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#facultyID">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#facultyName">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#facultyPhone">
+  <rdfs:domain rdf:resource="#Faculty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#finalExamScore">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#gradeAwardedInAcademicYear">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#gradeAwardedInSemesterName">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#gradeID">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#gradeResult">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isActive">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isStaff">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#isSuperuser">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#linkID">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#majorID">
+  <rdfs:domain rdf:resource="#Major"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#majorName">
+  <rdfs:domain rdf:resource="#Major"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#minCreditsRequired">
+  <rdfs:domain rdf:resource="#OptionalGroup"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#optionalGroupDescription">
+  <rdfs:domain rdf:resource="#OptionalGroup"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#optionalGroupID">
+  <rdfs:domain rdf:resource="#OptionalGroup"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#optionalGroupName">
+  <rdfs:domain rdf:resource="#OptionalGroup"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#practiceHours">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#programID">
+  <rdfs:domain rdf:resource="#TrainingProgram"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#programName">
+  <rdfs:domain rdf:resource="#TrainingProgram"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#projectHours">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#requirementType">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#startYear">
+  <rdfs:domain rdf:resource="#TrainingProgram"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#stipulatedSemester">
+  <rdfs:domain rdf:resource="#ProgramCourseLink"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentAddress">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentEmail">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentFullName">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentGender">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentID">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#studentPhone">
+  <rdfs:domain rdf:resource="#Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#termEndDate">
+  <rdfs:domain rdf:resource="#AcademicTerm"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#termID">
+  <rdfs:domain rdf:resource="#AcademicTerm"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#termName">
+  <rdfs:domain rdf:resource="#AcademicTerm"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#termStartDate">
+  <rdfs:domain rdf:resource="#AcademicTerm"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#testTime">
+  <rdfs:domain rdf:resource="#Grade"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#theoryHours">
+  <rdfs:domain rdf:resource="#Course"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#userImageUrl">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#username">
+  <rdfs:domain rdf:resource="#UserAccount"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#UserAccount">
+  <rdfs:comment xml:lang="en">Represents a user account in the system.</rdfs:comment>
+  <rdfs:label xml:lang="en">User Account</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Faculty">
+  <rdfs:comment xml:lang="en">Represents a faculty within the university.</rdfs:comment>
+  <rdfs:label xml:lang="en">Faculty</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Grade">
+  <rdfs:comment xml:lang="en">Represents a grade achieved by a student for a course.</rdfs:comment>
+  <rdfs:label xml:lang="en">Grade</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Student">
+  <rdfs:comment xml:lang="en">Represents a student.</rdfs:comment>
+  <rdfs:label xml:lang="en">Student</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#AcademicTerm">
+  <rdfs:comment xml:lang="en">Represents an academic term or semester.</rdfs:comment>
+  <rdfs:label xml:lang="en">Academic Term</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Major">
+  <rdfs:comment xml:lang="en">Represents an academic major.</rdfs:comment>
+  <rdfs:label xml:lang="en">Major</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Course">
+  <rdfs:comment xml:lang="en">Represents an academic course.</rdfs:comment>
+  <rdfs:label xml:lang="en">Course</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#OptionalGroup">
+  <rdfs:comment xml:lang="en">Represents a group of optional/elective courses.</rdfs:comment>
+  <rdfs:label xml:lang="en">Optional Group</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#ProgramCourseLink">
+  <rdfs:comment xml:lang="en">Links a course to a training program, specifying details like semester and requirement type.</rdfs:comment>
+  <rdfs:label xml:lang="en">Program Course Link</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#TrainingProgram">
+  <rdfs:comment xml:lang="en">Represents an academic training program.</rdfs:comment>
+  <rdfs:label xml:lang="en">Training Program</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Field">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+
+<swrl:Variable rdf:about="urn:swrl#s"/>
+
+<swrl:Variable rdf:about="urn:swrl#f"/>
+
+<swrl:Variable rdf:about="urn:swrl#c"/>
+
+<swrl:Imp>
+  <swrl:body>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="#hasInterest"/>
+          <swrl:argument1 rdf:resource="urn:swrl#s"/>
+          <swrl:argument2 rdf:resource="urn:swrl#f"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest>
+        <rdf:Description>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#suggestsCourse"/>
+              <swrl:argument1 rdf:resource="urn:swrl#f"/>
+              <swrl:argument2 rdf:resource="urn:swrl#c"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        </rdf:Description>
+      </rdf:rest>
+    </rdf:Description>
+  </swrl:body>
+  <swrl:head>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="#recommended"/>
+          <swrl:argument1 rdf:resource="urn:swrl#s"/>
+          <swrl:argument2 rdf:resource="urn:swrl#c"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </rdf:Description>
+  </swrl:head>
+</swrl:Imp>
+
+<swrl:Imp>
+  <swrl:body>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="#hasInterest"/>
+          <swrl:argument1 rdf:resource="urn:swrl#s"/>
+          <swrl:argument2 rdf:resource="urn:swrl#f"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest>
+        <rdf:Description>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#suggestsCourse"/>
+              <swrl:argument1 rdf:resource="urn:swrl#f"/>
+              <swrl:argument2 rdf:resource="urn:swrl#c"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        </rdf:Description>
+      </rdf:rest>
+    </rdf:Description>
+  </swrl:body>
+  <swrl:head>
+    <rdf:Description>
+      <rdf:first>
+        <swrl:IndividualPropertyAtom>
+          <swrl:propertyPredicate rdf:resource="#recommended"/>
+          <swrl:argument1 rdf:resource="urn:swrl#s"/>
+          <swrl:argument2 rdf:resource="urn:swrl#c"/>
+        </swrl:IndividualPropertyAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </rdf:Description>
+  </swrl:head>
+</swrl:Imp>
+
+
+</rdf:RDF>
